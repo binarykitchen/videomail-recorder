@@ -1,0 +1,131 @@
+{
+  "name": "videomail-recorder",
+  "version": "0.0.1",
+  "description": "Record videos from your mobile or browser—the elegant, modern way. For the love of Sign Language 🎬📱🤟🏼",
+  "keywords": [
+    "videomail",
+    "sign language",
+    "video",
+    "webcam",
+    "camera",
+    "audio"
+  ],
+  "homepage": "https://videomail.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/binarykitchen/videomail-recorder.git"
+  },
+  "license": "MIT",
+  "author": "Michael Heuberger <michael.heuberger@binarykitchen.com>",
+  "contributors": [
+    {
+      "name": "Michael Heuberger",
+      "email": "michael.heuberger@binarykitchen.com"
+    }
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "umd": "./dist/umd/index.js",
+      "require": "./dist/cjs/index.cjs",
+      "import": "./dist/esm/index.js"
+    }
+  },
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "audit": "npx audit-ci --config audit-ci.json",
+    "build:prod": "cross-env NODE_ENV=production rslib build",
+    "build:prod:doctor": "cross-env RSDOCTOR=true npm run build:prod",
+    "build:storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_174facb70dae803",
+    "lint": "eslint --color .",
+    "lint:fix": "eslint --color --fix .",
+    "lint:inspect": "eslint --inspect-config",
+    "prettier": "prettier --check ./etc ./src ./.storybook *.ts *.js",
+    "prettier:fix": "prettier --write ./etc ./src ./.storybook *.ts *.js",
+    "release": "release-it --only-version --config ./etc/release-it.ts",
+    "storybook": "storybook dev -p 8443 --https --ssl-cert ./etc/ssl-cert/localhost.crt --ssl-key ./etc/ssl-cert/localhost.key",
+    "test": "cross-env ENVIRON=test vitest --watch=false",
+    "types": "tsc --noEmit",
+    "types:config": "tsc --showConfig"
+  },
+  "prettier": "./prettier.config.js",
+  "dependencies": {
+    "@base-ui/react": "1.1.0",
+    "@fastify/deepmerge": "github:fastify/deepmerge#fix/onlyDefinedProperties-types",
+    "@reduxjs/toolkit": "2.11.2",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-redux": "9.2.0",
+    "serialize-error": "13.0.1",
+    "ua-parser-js": "2.0.9"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "5.0.0",
+    "@eslint/config-inspector": "1.4.2",
+    "@eslint/js": "9.39.2",
+    "@rsbuild/plugin-node-polyfill": "1.4.4",
+    "@rsbuild/plugin-react": "1.4.5",
+    "@rsdoctor/rspack-plugin": "1.5.2",
+    "@rslib/core": "0.19.5",
+    "@storybook/addon-a11y": "10.2.7",
+    "@storybook/addon-docs": "10.2.7",
+    "@storybook/addon-links": "10.2.7",
+    "@storybook/react": "10.2.7",
+    "@tsconfig/node24": "24.0.4",
+    "@tsconfig/strictest": "2.0.8",
+    "@types/defined": "1.0.2",
+    "@types/node": "24.10.8",
+    "@types/react-dom": "19.2.3",
+    "@types/ua-parser-js": "0.7.39",
+    "@vitest/eslint-plugin": "1.6.6",
+    "audit-ci": "7.1.0",
+    "chromatic": "15.0.0",
+    "cross-env": "10.1.0",
+    "eslint": "9.39.2",
+    "eslint-import-resolver-typescript": "4.4.4",
+    "eslint-plugin-de-morgan": "2.0.0",
+    "eslint-plugin-depend": "1.4.0",
+    "eslint-plugin-import-x": "4.16.1",
+    "eslint-plugin-markdownlint": "0.9.0",
+    "eslint-plugin-package-json": "0.88.2",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "eslint-plugin-regexp": "3.0.0",
+    "eslint-plugin-security": "3.0.1",
+    "eslint-plugin-simple-import-sort": "12.1.1",
+    "eslint-plugin-storybook": "10.2.7",
+    "globals": "17.3.0",
+    "jsdom": "28.0.0",
+    "msw": "2.12.9",
+    "msw-storybook-addon": "2.0.6",
+    "prettier": "3.8.1",
+    "prettier-plugin-curly": "0.4.1",
+    "prettier-plugin-jsdoc": "1.8.0",
+    "prettier-plugin-packagejson": "3.0.0",
+    "prettier-plugin-sh": "0.18.0",
+    "release-it": "19.2.4",
+    "storybook": "10.2.7",
+    "storybook-addon-rslib": "3.2.2",
+    "storybook-react-rsbuild": "3.2.2",
+    "type-fest": "5.4.4",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.54.0",
+    "vitest": "4.0.18"
+  },
+  "engines": {
+    "node": "^24.13.0",
+    "npm": "^11.6.2"
+  },
+  "msw": {
+    "workerDirectory": [
+      ".storybook/public"
+    ]
+  },
+  "readmeFilename": "README.md"
+}
