@@ -1,0 +1,54 @@
+{
+  "include": [
+    "etc",
+    "src",
+    ".storybook/*.ts",
+    ".storybook/*.tsx",
+    "eslint.config.js",
+    "prettier.config.js",
+    "vite.config.ts",
+    "rslib.config.ts"
+  ],
+  "extends": [
+    "./node_modules/@tsconfig/strictest/tsconfig.json",
+    "./node_modules/@tsconfig/node24/tsconfig.json"
+  ],
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "bundler",
+
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext",
+      // Add for ServiceWorker support
+      "WebWorker"
+    ],
+    "jsx": "react-jsx",
+    "types": ["node", "vitest/globals"],
+
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+
+    // This option can help you avoid using certain syntax that cannot be correctly compiled by SWC and Babel, see:
+    // https://rsbuild.dev/guide/basic/typescript#isolatedmodules
+    "isolatedModules": true,
+
+    // Strips all comments from TypeScript files when converting into JavaScript,
+    // you rarely read compiled code so this saves space
+    "removeComments": true,
+
+    "noEmit": true,
+
+    // This to speed up CI and avoid external type issues
+    "skipLibCheck": true,
+
+    // So that eslint and prettier written in JS can be included
+    "allowJs": true,
+
+    // TODO Remove these exceptions and fix more errors one day
+    "noImplicitAny": false,
+    "noPropertyAccessFromIndexSignature": false
+  }
+}
